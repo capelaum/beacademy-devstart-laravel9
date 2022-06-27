@@ -1,7 +1,9 @@
 <?php
 
-use App\Http\Controllers\UserControler;
-use App\Models\User;
+use App\Http\Controllers\{
+    UserControler,
+    ViaCepController
+};
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -13,3 +15,7 @@ Route::prefix('users')->group(function () {
 
     Route::get('/{user}', [UserControler::class, 'show'])->name('users.show');
 });
+
+Route::get('/viacep', [ViaCepController::class, 'index'])->name('viacep.index');
+Route::post('/viacep', [ViaCepController::class, 'index'])->name('viacep.index.post');
+Route::get('/viacep/{cep}', [ViaCepController::class, 'show'])->name('viacep.show');
