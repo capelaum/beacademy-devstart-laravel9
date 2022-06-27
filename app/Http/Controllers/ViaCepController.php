@@ -19,6 +19,9 @@ class ViaCepController extends Controller
     {
         $response = Http::get("https://viacep.com.br/ws/{$cep}/json/")->json();
 
-        dd($response);
+        if (!$response)
+            return "Não foi possível localizar o CEP, por favor cheque os dados.";
+
+        return $response;
     }
 }
