@@ -12,6 +12,7 @@
 <body>
 
     <main>
+        <h1>Busca por CEP</h1>
         <div>
             <form action="{{ route('viacep.index.post') }}" action="post">
                 @csrf
