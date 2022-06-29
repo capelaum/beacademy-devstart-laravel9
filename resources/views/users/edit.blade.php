@@ -3,6 +3,14 @@
 @section('heading', 'Editar Usuário')
 @section('main')
 
+@if ($errors->any())
+@foreach ($errors->all() as $error)
+<div class="alert alert-danger" role="alert">
+    {{ $error }}
+</div>
+@endforeach
+@endif
+
 <form method="POST" action="{{ route('users.update', $user->id) }}">
     @method('PUT')
     @csrf
@@ -17,11 +25,11 @@
     </div>
 
     <div class="mb-3">
-        <label for="password" class="form-label">Password</label>
+        <label for="password" class="form-label">Senha</label>
         <input type="password" class="form-control bg-dark text-white" id="password" name="password">
     </div>
 
 
-    <button type="submit" class="btn btn-primary btn-lg">Atualizar</button>
+    <button type="submit" class="btn btn-primary btn-lg">Editar</button>
 </form>
 @endsection

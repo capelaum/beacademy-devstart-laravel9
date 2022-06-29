@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Requests\SaveUpdateUserFormRequest;
 
 class UserControler extends Controller
 {
@@ -37,7 +38,7 @@ class UserControler extends Controller
         return view('users.create');
     }
 
-    public function save(Request $request)
+    public function save(SaveUpdateUserFormRequest $request)
     {
         // $user = new User;
         // $user->name = $request->name;
@@ -64,7 +65,7 @@ class UserControler extends Controller
         return view('users.edit', compact('user'));
     }
 
-    public function update(Request $request, string $id)
+    public function update(SaveUpdateUserFormRequest $request, string $id)
     {
         $user = $this->model->find($id);
 
