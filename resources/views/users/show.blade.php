@@ -1,37 +1,27 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+@extends('template.users')
+@section('title', $user->name)
+@section('heading', 'Informações do Usuário')
+@section('main')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <meta name="description" content="">
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <title>{{ $user->name }}</title>
-</head>
+<a href="{{ route('users.index') }}" class="btn btn-dark text-white position-absolute top-0 end-0 m-2">Voltar</a>
 
-<body>
-    <main class="container my-5">
-        <h1 class="mb-5">Informações de Usuário</h1>
-
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
-                <h5 class="card-title">{{ $user->name }}</h5>
-                <h6 class="card-subtitle mb-4 text-muted">{{ $user->email }}</h6>
-                <strong class="card-text bold">Data de criação</strong>
-                <br>
-                <span class="card-text">{{ $user->created_at }}</span>
-            </div>
-            <div class="card-footer">
-                <a href="#" class="btn btn-primary text-white" role="button">
-                    Editar
-                </a>
-                <a href="#" class="btn btn-danger text-white" role="button">
-                    Deletar
-                </a>
-            </div>
+<div class="card rounded-3 border border-1" style="width: 300px;">
+    <div class="card-body">
+        <h1 class="card-title fs-3">{{ $user->name }}</h1>
+        <a href="mailto:{{ $user->email }}" class="card-subtitle card-link text-primary">{{ $user->email }}</a>
+        <div class="mt-4">
+            <strong class="card-text d-block">Data de criação:</strong>
+            <span class="card-text">{{ $user->created_at }}</span>
         </div>
-    </main>
-</body>
+    </div>
+    <div class="card-footer">
+        <a href="#" class="btn btn-primary text-white" role="button">
+            Editar
+        </a>
+        <a href="#" class="btn btn-danger text-white" role="button">
+            Deletar
+        </a>
+    </div>
+</div>
 
-</html>
+@endsection
