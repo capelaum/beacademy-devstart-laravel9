@@ -1,9 +1,7 @@
 @extends('template.users')
-@section('title', $user->name)
+@section('title', $user->id . ' - ' . $user->name)
 @section('heading', 'Informações do Usuário')
 @section('main')
-
-<a href="{{ route('users.index') }}" class="btn btn-dark text-white position-absolute top-0 end-0 m-2">Voltar</a>
 
 <div class="card rounded-3 border border-1" style="width: 300px;">
     <div class="card-body">

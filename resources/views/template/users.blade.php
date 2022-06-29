@@ -10,8 +10,13 @@
 </head>
 
 <body>
-    <main class="container my-5 position-relative">
-        <h1 class="mb-5">@yield('heading')</h1>
+    <header class="container mt-5 position-relative">
+        <a class="btn btn-dark" href="{{ route('users.index') }}">Listagem de Usuários</a>
+        <a class="btn btn-dark" href="{{ route('users.create') }}">Criar Usuário</a>
+        <hr>
+    </header>
+    <main class="container position-relative">
+        <h1 class="my-5">@yield('heading')</h1>
 
         @yield('main')
     </main>

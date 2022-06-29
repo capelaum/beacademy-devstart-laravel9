@@ -12,7 +12,8 @@ Route::get('/', function () {
 
 Route::prefix('users')->group(function () {
     Route::get('', [UserControler::class, 'index'])->name('users.index');
-
+    Route::get('/create', [UserControler::class, 'create'])->name('users.create');
+    Route::post('/save', [UserControler::class, 'save'])->name('users.save');
     Route::get('/{user}', [UserControler::class, 'show'])->name('users.show');
 });
 

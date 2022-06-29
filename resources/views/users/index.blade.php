@@ -3,6 +3,10 @@
 @section('heading', 'Listagem de Usuários')
 @section('main')
 
+@if ($users->isEmpty())
+<p>Não há usuários cadastrados 😕</p>
+@else
+
 <table class="table table-dark table-hover table-striped">
     <thead class="text-center">
         <tr>
@@ -29,4 +33,5 @@
         @endforeach
     </tbody>
 </table>
+@endif
 @endsection
