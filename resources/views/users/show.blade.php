@@ -16,9 +16,14 @@
         <a href="{{ route('users.edit', $user->id) }}" class="btn btn-primary text-white mb-3 d-block" role="button">
             Editar
         </a>
-        <a href="#" class="btn btn-danger text-white d-block" role="button">
-            Deletar
-        </a>
+        <form action="{{ route('users.delete', $user->id) }}" method="POSt">
+            @method('DELETE')
+            @csrf
+
+            <button type="submit" class="btn btn-danger text-white d-block" style="width: 100%;" role="button">
+                Deletar
+            </button>
+        </form>
     </div>
 </div>
 

@@ -19,6 +19,8 @@ Route::prefix('users')->group(function () {
     Route::get('/edit/{id}', [UserControler::class, 'edit'])->name('users.edit');
     Route::put('/update/{id}', [UserControler::class, 'update'])->name('users.update');
 
+    Route::delete('/delete/{id}', [UserControler::class, 'delete'])->name('users.delete');
+
     Route::get('/{id}', [UserControler::class, 'show'])->name('users.show');
 });
 

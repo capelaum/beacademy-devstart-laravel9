@@ -24,10 +24,21 @@
             <td>{{ $user->name }}</td>
             <td>{{ $user->email }}</td>
             <td>{{ date('d/m/Y - H:i', strtotime($user->created_at)) }}</td>
-            <td>
-                <a href="{{ route('users.show', $user->id) }}" class="btn btn-primary">
+            <td class="d-flex justify-content-center">
+                <a href="{{ route('users.show', $user->id) }}" class="btn btn-primary me-2">
                     Visualizar
                 </a>
+                <a href="{{ route('users.edit', $user->id) }}" class="btn btn-primary me-2" role="button">
+                    Editar
+                </a>
+                <form action="{{ route('users.delete', $user->id) }}" method="POSt" class="">
+                    @method('DELETE')
+                    @csrf
+
+                    <button type="submit" class="btn btn-danger text-white" role="button">
+                        Deletar
+                    </button>
+                </form>
             </td>
         </tr>
         @endforeach

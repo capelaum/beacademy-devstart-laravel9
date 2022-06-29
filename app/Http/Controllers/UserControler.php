@@ -82,4 +82,17 @@ class UserControler extends Controller
 
         return view('users.show', compact('user'));
     }
+
+    public function delete(string $id)
+    {
+        $user = $this->model->find($id);
+
+        if (!$user) {
+            return redirect()->route('users.index');
+        }
+
+        $user->delete();
+
+        return redirect()->route('users.index');
+    }
 }
