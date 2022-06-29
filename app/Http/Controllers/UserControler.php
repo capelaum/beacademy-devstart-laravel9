@@ -9,25 +9,21 @@ class UserControler extends Controller
 {
     public function index()
     {
-        $user = new  \stdClass();
-        $user->name = 'Luís';
-        $user->age = 28;
+        $users = User::all();
 
-        $user2 = new  \stdClass();
-        $user2->name = 'Luís';
-        $user2->age = 28;
-
-        $users = [
-            $user, $user2
-        ];
-
-        var_dump($users);
-
-        dd($users);
+        return view('users.index', compact('users'));
     }
 
-    public function show(User $user)
+    public function show(string $id)
     {
-        return $user;
+        $user = User::find($id);
+        // $user = User::findOrFail($id);
+        // $user = User::where('id', $id)->first();
+
+        if (!$user) {
+            return redirect()->route('users.index');
+        }
+
+        return view('users.show', compact('user'));
     }
 }
