@@ -9,10 +9,10 @@
     <title>@yield('title')</title>
 </head>
 
-<body>
+<body class="bg-dark text-white">
     <header class="container mt-5 position-relative">
-        <a class="btn btn-dark" href="{{ route('users.index') }}">Listagem de Usuários</a>
-        <a class="btn btn-dark" href="{{ route('users.create') }}">Criar Usuário</a>
+        <a class="btn btn-secondary" href="{{ route('users.index') }}">Listagem de Usuários</a>
+        <a class="btn btn-secondary" href="{{ route('users.create') }}">Cadastrar Usuário</a>
         <hr>
     </header>
     <main class="container position-relative">

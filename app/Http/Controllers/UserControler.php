@@ -52,4 +52,34 @@ class UserControler extends Controller
 
         return redirect()->route('users.index');
     }
+
+    public function edit(string $id)
+    {
+        $user = $this->model->find($id);
+
+        if (!$user) {
+            return redirect()->route('users.index');
+        }
+
+        return view('users.edit', compact('user'));
+    }
+
+    public function update(Request $request, string $id)
+    {
+        $user = $this->model->find($id);
+
+        if (!$user) {
+            return redirect()->route('users.index');
+        }
+
+        $data = $request->only('name', 'email');
+
+        if ($request->password) {
+            $data['password'] = bcrypt($request->password);
+        }
+
+        $user->update($data);
+
+        return view('users.show', compact('user'));
+    }
 }

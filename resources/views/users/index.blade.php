@@ -23,9 +23,9 @@
             <th scope="row">{{ $user->id }}</th>
             <td>{{ $user->name }}</td>
             <td>{{ $user->email }}</td>
-            <td>{{ date('d/m/Y H:i', strtotime($user->created_at)) }}</td>
+            <td>{{ date('d/m/Y - H:i', strtotime($user->created_at)) }}</td>
             <td>
-                <a href="{{ route('users.show', $user->id) }}" class="btn btn-primary text-white">
+                <a href="{{ route('users.show', $user->id) }}" class="btn btn-primary">
                     Visualizar
                 </a>
             </td>
