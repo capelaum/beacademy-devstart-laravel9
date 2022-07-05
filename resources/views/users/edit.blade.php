@@ -16,12 +16,12 @@
     @csrf
     <div class="mb-3">
         <label for="name" class="form-label">Name</label>
-        <input type="text" class="form-control bg-dark text-white" id="name" name="name" value="{{ $user->name}}" required>
+        <input type="text" class="form-control bg-dark text-white" id="name" name="name" value="{{ $user->name }}" required>
     </div>
 
     <div class="mb-3">
         <label for="email" class="form-label">Email</label>
-        <input type="email" class="form-control bg-dark text-white" id="email" name="email" value="{{ $user->email}}" required>
+        <input type="email" class="form-control bg-dark text-white" id="email" name="email" value="{{ $user->email }}" required>
     </div>
 
     <div class="mb-3">

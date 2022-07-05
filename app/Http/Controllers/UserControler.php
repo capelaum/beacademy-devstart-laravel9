@@ -46,7 +46,7 @@ class UserControler extends Controller
         // $user->password = bcrypt($request->password);
         // $user->save();
 
-        $data = $request->all();
+        $data = $request->validated();
         $data['password'] = bcrypt($request->password);
 
         $this->model->create($data);
