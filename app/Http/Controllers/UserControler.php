@@ -13,14 +13,9 @@ class UserControler extends Controller
         $this->model = $user;
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        //sort by desc id and paginate users
-        $users = $this->model->orderBy('id', 'desc')->paginate(5);
-
-        foreach ($users as $user) {
-            $user->image = User::getUserAvatarPath($user);
-        }
+        $users = $this->model->getUsers($request->search);
 
         return view('users.index', compact('users'));
     }

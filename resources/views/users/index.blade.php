@@ -1,7 +1,18 @@
 @extends('template.users')
 @section('title', 'Listagem de Usuários')
 @section('heading', 'Listagem de Usuários')
+
 @section('main')
+
+<div class="col-sm mt-2 mb-5 w-50">
+    <form method="GET" action="{{ route('users.index') }}">
+        <div class="input-group">
+            <input class="form-control bg-dark text-white" type="search" name="search" id="search"
+                value="{{ request()->search }}">
+            <button type="submit" class="btn btn-primary">Buscar</button>
+        </div>
+    </form>
+</div>
 
 @if ($users->isEmpty())
 <p>Não há usuários cadastrados 😕</p>
@@ -29,8 +40,8 @@
             <td>{{ $user->name }}</td>
             <td>{{ $user->email }}</td>
             <td>
-                <a href="{{ route('user.posts', $user->id) }}" class="btn btn-outline-success">
-                    Postagens - {{ $user->posts->count() }}
+                <a href="{{ route('user.posts', $user->id) }}" class="btn btn-success">
+                    {{ $user->posts->count() }} Posts
                 </a>
             </td>
             <td>{{ date('d/m/Y - H:i', strtotime($user->created_at)) }}</td>

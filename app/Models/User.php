@@ -52,6 +52,20 @@ class User extends Authenticatable
         return asset('storage/profile/avatar.png');
     }
 
+    public function getUsers(string $search = null)
+    {
+        $users = $this->where(function ($query) use ($search) {
+            $query->where('name', 'like', '%' . $search . '%')
+                ->orWhere('email', 'like', '%' . $search . '%');
+        })->paginate(5);
+
+        foreach ($users as $user) {
+            $user->image = self::getUserAvatarPath($user);
+        }
+
+        return $users;
+    }
+
     public function posts()
     {
         return $this->hasMany(Post::class);
