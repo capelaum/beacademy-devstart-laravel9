@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\{
     UserControler,
+    PostController,
     ViaCepController
 };
 use Illuminate\Support\Facades\Route;
@@ -22,7 +23,14 @@ Route::prefix('users')->group(function () {
     Route::delete('/delete/{id}', [UserControler::class, 'delete'])->name('users.delete');
 
     Route::get('/{id}', [UserControler::class, 'show'])->name('users.show');
+
+    Route::get('/{user}/posts', [PostController::class, 'userPosts'])->name('posts.user');
 });
+
+Route::prefix('posts')->group(function () {
+    Route::get('/', [PostController::class, 'index'])->name('posts.index');
+});
+
 
 Route::get('/viacep', [ViaCepController::class, 'index'])->name('viacep.index');
 Route::post('/viacep', [ViaCepController::class, 'index'])->name('viacep.index.post');

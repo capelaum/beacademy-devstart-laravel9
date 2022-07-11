@@ -14,6 +14,7 @@
             <th scope="col">Avatar</th>
             <th scope="col">Nome</th>
             <th scope="col">Email</th>
+            <th scope="col">Postagens</th>
             <th scope="col">Data de Cadastro</th>
             <th scope="col">Ações</th>
         </tr>
@@ -27,6 +28,11 @@
             </td>
             <td>{{ $user->name }}</td>
             <td>{{ $user->email }}</td>
+            <td>
+                <a href="{{ route('posts.user', $user->id) }}" class="btn btn-outline-success">
+                    Postagens - {{ $user->posts->count() }}
+                </a>
+            </td>
             <td>{{ date('d/m/Y - H:i', strtotime($user->created_at)) }}</td>
             <td class="d-flex justify-content-center">
                 <a href="{{ route('users.show', $user->id) }}" class="btn btn-primary me-2">

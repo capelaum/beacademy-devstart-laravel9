@@ -51,4 +51,9 @@ class User extends Authenticatable
 
         return asset('storage/profile/avatar.png');
     }
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
 }

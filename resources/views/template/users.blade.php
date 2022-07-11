@@ -12,8 +12,9 @@
 
 <body class="bg-dark text-white">
     <header class="container mt-5 position-relative">
-        <a class="btn btn-secondary" href="{{ route('users.index') }}">Listagem de Usuários</a>
-        <a class="btn btn-secondary" href="{{ route('users.create') }}">Cadastrar Usuário</a>
+        <a class="btn btn-secondary me-4" href="{{ route('users.index') }}">Listagem de Usuários</a>
+        <a class="btn btn-secondary me-4" href="{{ route('users.create') }}">Cadastrar Usuário</a>
+        <a class="btn btn-secondary" href="{{ route('posts.index') }}">Posts</a>
         <hr>
     </header>
     <main class="container position-relative">
