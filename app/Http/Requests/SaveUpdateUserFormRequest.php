@@ -37,6 +37,11 @@ class SaveUpdateUserFormRequest extends FormRequest
                 'required',
                 'min:6',
                 'max:30'
+            ],
+            'image' => [
+                'nullable',
+                'file',
+                'mimes:jpeg,png,jpg',
             ]
         ];
 

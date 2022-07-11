@@ -15,7 +15,12 @@ class UserControler extends Controller
 
     public function index()
     {
-        $users = User::all()->sortByDesc('id');
+        //sort by desc id and paginate users
+        $users = $this->model->orderBy('id', 'desc')->paginate(5);
+
+        foreach ($users as $user) {
+            $user->image = User::getUserAvatarPath($user);
+        }
 
         return view('users.index', compact('users'));
     }
@@ -38,16 +43,17 @@ class UserControler extends Controller
         return view('users.create');
     }
 
-    public function save(SaveUpdateUserFormRequest $request)
+    public function store(SaveUpdateUserFormRequest $request)
     {
-        // $user = new User;
-        // $user->name = $request->name;
-        // $user->email = $request->email;
-        // $user->password = bcrypt($request->password);
-        // $user->save();
-
         $data = $request->validated();
+
         $data['password'] = bcrypt($request->password);
+
+        if ($request['image']) {
+            $image = $request['image'];
+            $path = $image->store('profile', 'public');
+            $data['image'] = $path;
+        }
 
         $this->model->create($data);
 
@@ -77,6 +83,12 @@ class UserControler extends Controller
 
         if ($request->password) {
             $data['password'] = bcrypt($request->password);
+        }
+
+        if ($request['image']) {
+            $image = $request['image'];
+            $path = $image->store('profile', 'public');
+            $data['image'] = $path;
         }
 
         $user->update($data);

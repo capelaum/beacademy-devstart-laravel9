@@ -10,7 +10,8 @@
 <table class="table table-dark table-hover table-striped">
     <thead class="text-center">
         <tr>
-            <th scope="col">#ID</th>
+            <th scope="col">ID</th>
+            <th scope="col">Avatar</th>
             <th scope="col">Nome</th>
             <th scope="col">Email</th>
             <th scope="col">Data de Cadastro</th>
@@ -20,7 +21,10 @@
     <tbody class="text-center">
         @foreach ($users as $user)
         <tr>
-            <th scope="row">{{ $user->id }}</th>
+            <td>{{ $user->id }}</td>
+            <td>
+                <img src="{{ $user->image }}" alt="{{ $user->name }}" width="50px" height="50px" class="rounded-circle">
+            </td>
             <td>{{ $user->name }}</td>
             <td>{{ $user->email }}</td>
             <td>{{ date('d/m/Y - H:i', strtotime($user->created_at)) }}</td>
@@ -44,5 +48,10 @@
         @endforeach
     </tbody>
 </table>
+
+<div class="justify-content-center pagination">
+    {{ $users->links('pagination::bootstrap-4') }}
+</div>
+
 @endif
 @endsection
