@@ -27,13 +27,9 @@ class UserControler extends Controller
 
     public function show(string $id)
     {
-        $user = User::find($id);
-        // $user = User::findOrFail($id);
-        // $user = User::where('id', $id)->first();
+        $user = User::findOrFail($id);
 
-        if (!$user) {
-            return redirect()->route('users.index');
-        }
+        $user->load('teams');
 
         return view('users.show', compact('user'));
     }

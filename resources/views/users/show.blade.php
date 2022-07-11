@@ -11,6 +11,12 @@
             <strong class="card-text d-block">Data de criação:</strong>
             <span class="card-text">{{ date('d/m/Y - H:i', strtotime($user->created_at)) }}</span>
         </div>
+        <div class="mt-4">
+            <strong class="card-text d-block">Times</strong>
+            @foreach ($user->teams as $team)
+            <span class="d-block card-text">{{ $team->name }}</span>
+            @endforeach
+        </div>
     </div>
     <div class="card-footer">
         <a href="{{ route('users.edit', $user->id) }}" class="btn btn-primary text-white mb-3 d-block" role="button">
