@@ -25,8 +25,8 @@
         <tr>
             <td>{{ $post->id }}</td>
             <td>{{ $post->user->name }}</td>
-            <td>{{ $post->title }}</td>
-            <td>{{ $post->content }}</td>
+            <td style="max-width: 250px">{{ $post->title }}</td>
+            <td style="max-width: 450px">{{ $post->content }}</td>
             <td>{{ date('d/m/Y - H:i', strtotime($post->created_at)) }}</td>
         </tr>
 
