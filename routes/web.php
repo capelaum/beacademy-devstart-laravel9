@@ -24,7 +24,7 @@ Route::prefix('users')->group(function () {
 
     Route::get('/{id}', [UserControler::class, 'show'])->name('users.show');
 
-    Route::get('/{user}/posts', [PostController::class, 'userPosts'])->name('posts.user');
+    Route::get('/{user}/posts', [PostController::class, 'userPosts'])->name('user.posts');
 });
 
 Route::prefix('posts')->group(function () {

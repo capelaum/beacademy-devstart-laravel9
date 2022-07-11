@@ -29,7 +29,7 @@
             <td>{{ $user->name }}</td>
             <td>{{ $user->email }}</td>
             <td>
-                <a href="{{ route('posts.user', $user->id) }}" class="btn btn-outline-success">
+                <a href="{{ route('user.posts', $user->id) }}" class="btn btn-outline-success">
                     Postagens - {{ $user->posts->count() }}
                 </a>
             </td>

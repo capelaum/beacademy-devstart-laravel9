@@ -1,5 +1,5 @@
 @extends('template.users')
-@section('title', 'Listagem de Posts')
+@section('title', "{$user->id} | Listagem de Posts")
 @section('heading', 'Listagem de Posts')
 @section('main')
 
@@ -48,7 +48,7 @@
         <tr>
             <td>{{ $post->id }}</td>
             <td>{{ $post->title }}</td>
-            <td>{{ $post->content }}</td>
+            <td style="max-width: 500px">{{ $post->content }}</td>
             <td>{{ date('d/m/Y - H:i', strtotime($post->created_at)) }}</td>
         </tr>
 
